@@ -190,7 +190,7 @@ class TcWddxSerializerTest < Test::Unit::TestCase
 
   # Bugfix -> serialize control characters
   def test_serialize_all
-     xml = "<wddxPacket version='1.0'><header/><data><array length='8'><string>This is array element #1</string><string>This is array element #2</string><string>This is array element #3</string><string>Some special characters, e.g., control characters <char code='0A'/><char code='0D'/>,pre-defined entities &lt;&amp;&gt;</string><struct><var name='B'><string>b</string></var><var name='A'><string>a</string></var></struct><string>true</string><number>-12.456</number><dateTime>2000-01-01T06:00:00+01:00</dateTime></array></data></wddxPacket>"
+     xml = "<wddxPacket version='1.0'><header/><data><array length='8'><string>This is array element #1</string><string>This is array element #2</string><string>This is array element #3</string><string>Some special characters, e.g., control characters <char code='0A'/><char code='0D'/>,pre-defined entities &lt;&amp;&gt;</string><struct><var name='B'><string>b</string></var><var name='A'><string>a</string></var></struct><string>true</string><number>-12.456</number><dateTime>2000-01-01T05:00:00Z</dateTime></array></data></wddxPacket>"
      wddx = WDDX::Serializer::Serializer.new
      struct = WDDX::Struct.new
      struct.put("B", "b")
@@ -199,7 +199,7 @@ class TcWddxSerializerTest < Test::Unit::TestCase
      array = ["This is array element #1", "This is array element #2", "This is array element #3", "Some special characters, e.g., " +
                      "control characters " +
                      "\n\r," + 
-                     "pre-defined entities <&>", struct, "true", -12.456, Time.at(946702800)]
+                     "pre-defined entities <&>", struct, "true", -12.456, Time.at(946702800).gmtime]
      wddx.add_var array  
      assert_equal xml, wddx.to_xml     
   end

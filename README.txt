@@ -13,7 +13,7 @@ The Ruby WDDX Gem enables easy usage of WDDX in Ruby.
 
 == Author
 
-Copyright (C) 2005, 2006, 2007 by Stefan Saasen <s-NOSPAM-REMOVE@juretta.com> - http://juretta.com/
+Copyright (C) 2005, 2006, 2007, 2008 by Stefan Saasen <s-NOSPAM-REMOVE@juretta.com> - http://juretta.com/
 
 == Installation
 

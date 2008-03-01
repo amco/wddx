@@ -40,7 +40,7 @@ class TcWddxDeserializerTest < Test::Unit::TestCase
   end
   
   def test_a_datetime
-    assert_equal "1998-06-12T04:32:12+02:00", @wddx.data['aDateTime'].iso8601
+    assert_equal "1998-06-11T16:32:12Z", @wddx.data['aDateTime'].gmtime.iso8601
   end                                                              
   
   def test_a_boolean

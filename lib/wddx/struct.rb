@@ -32,7 +32,7 @@ module WDDX
     
     # Calls *block* for each key in WDDX::Struct, passing the key as the parameter.
     def each_key(&block)
-      @order.each &block
+      @order.each(&block)
     end
     
     # Calls *block* for each key in WDDX::Struct, passing the value as the parameter.  

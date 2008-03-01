@@ -7,6 +7,12 @@ require 'active_record'
 
 require File.dirname(__FILE__) + '/test_helper.rb'
 
+class EmptyLogger
+  def method_missing(sym, *args)
+    # ignore
+  end
+end
+
 # Mock up AR
 ActiveRecord::Base.class_eval do
   alias_method :save, :valid?
@@ -15,6 +21,11 @@ ActiveRecord::Base.class_eval do
   def self.column(name, sql_type = nil, default = nil, null = true)
     columns << ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, sql_type, null)
   end
+  
+  def logger
+    EmptyLogger.new
+  end
+  
 end
 
 # Mock class

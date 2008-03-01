@@ -70,8 +70,8 @@ class TcWddxPublicApiTest < Test::Unit::TestCase
      vars = []
      vars << 23
      vars << Math::PI
-     vars << {"key2" => Time.at(946702800)}
-     assert_equal "<wddxPacket version='1.0'><header/><data><array length='3'><number>23</number><number>3.14159265358979</number><struct><var name='key2'><dateTime>2000-01-01T06:00:00+01:00</dateTime></var></struct></array></data></wddxPacket>", WDDX.dump(vars)
+     vars << {"key2" => Time.at(946702800).gmtime}
+     assert_equal "<wddxPacket version='1.0'><header/><data><array length='3'><number>23</number><number>3.14159265358979</number><struct><var name='key2'><dateTime>2000-01-01T05:00:00Z</dateTime></var></struct></array></data></wddxPacket>", WDDX.dump(vars)
   end
   
   
