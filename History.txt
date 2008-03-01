@@ -1,0 +1,24 @@
+== Release 0.3.2
+* Bugfix release: Fixes bug 13288.
+
+== Release 0.3.1
+* Bugfix release: Fixes bugs 10148 and 10149 reported by Rhett Sutphin
+* Patch [#10152] kindly provided by Rhett Sutphin!
+
+== Release 0.3.0
+* New example wddx_serialize.rb added (see examples/ subdirectory).
+* WDDX::Struct now includes Enumerable
+* Documentation improved
+* Symbol now responds_to?(:to_wddx)
+
+== Release 0.2.1
+Bugfix Release - 2006-12-20
+* Fixed TcWddxComplexTest 
+
+== Release 0.2.0
+Added Rails support - 2006-12-19
+
+Rails ActiveRecord::Base objects can be serialised to WDDX-XML using the +to_wddx+ method.
+
+== Release 0.1.0
+Initial release - 2006-12-18
