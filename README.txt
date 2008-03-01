@@ -4,6 +4,8 @@ http://wddx.rubyforge.org/
 
 == DESCRIPTION
 
+Ruby API for the WDDX XML interchange format (see http://www.openwddx.org/) 
+
 From http://www.openwddx.org/faq/:
  WDDX is an XML-based technology that enables the exchange of complex data between Web programming languages, 
  creating what some refer to as 'Web syndicate networks'. 
