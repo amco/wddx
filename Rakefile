@@ -10,38 +10,17 @@ require 'fileutils'
 include FileUtils
 require File.join(File.dirname(__FILE__), 'lib', 'wddx', 'version')
 
-RELEASE_TYPES = %w( gem ) # can use: gem, tar, zip
-REV = nil # UNCOMMENT IF REQUIRED: File.read(".svn/entries")[/committed-rev="(d+)"/, 1] rescue nil
-VERS = ENV['VERSION'] || (Wddx::VERSION::STRING + (REV ? ".#{REV}" : ""))
+# clean files and directories
 CLEAN.include ['**/.*.sw?', '*.gem', '.config', 'coverage']
-RDOC_OPTS = [
-    '--quiet', 
-    '--title', "Ruby::WDDX documentation",
-    "--opname", "index.html",
-    "--line-numbers",
-    "--include", "lib/**/*.rb",
-    "--include", "examples/**/*.rb",
-    "--main", "README.txt",
-    "--inline-source"
-]
-GEM_NAME = "wddx"
-DESCRIPTION = "Ruby API for the WDDX XML interchange format (see http://www.openwddx.org/)"
 
-# Run 'rake -T' to see list of generated tasks (from gem root directory)
-hoe = Hoe.new(GEM_NAME, VERS) do |p|
-  p.name = GEM_NAME
-  p.author = "Stefan Saasen" 
-  p.description = DESCRIPTION
-  p.email = "s@juretta.com"
-  p.summary = DESCRIPTION
-  p.url = "http://#{GEM_NAME}.rubyforge.org" 
-  p.lib_files = Dir["lib/**/*.rb"]
-  p.rubyforge_name = GEM_NAME
-  p.test_globs = ["test/**/tc_*.rb"]
-  p.changes = p.paragraphs_of('History.txt', 0..1).join("\n\n")
-  p.clean_globs = CLEAN  # An array of file patterns to delete on clean.
-  p.remote_rdoc_dir = '' # Release to root
-  p.spec_extras = {:dependencies => []}   # - A hash of extra values to set in the gemspec.
+Hoe.new("wddx", Wddx::VERSION::STRING) do |hoe|
+  hoe.rubyforge_name = "wddx"
+  hoe.developer("Stefan Saasen", "s@juretta.com")
+  hoe.test_globs = ["test/**/tc_*.rb"]
+  hoe.clean_globs = CLEAN
+  hoe.need_tar = false
+  hoe.remote_rdoc_dir = '' # Release to root
+  hoe.spec_extras = {:dependencies => []}   # - A hash of extra values to set in the gemspec.
 end
                                                  
 Rcov::RcovTask.new("rcov") do |t|
