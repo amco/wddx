@@ -13,7 +13,7 @@ require File.join(File.dirname(__FILE__), 'lib', 'wddx', 'version')
 RELEASE_TYPES = %w( gem ) # can use: gem, tar, zip
 REV = nil # UNCOMMENT IF REQUIRED: File.read(".svn/entries")[/committed-rev="(d+)"/, 1] rescue nil
 VERS = ENV['VERSION'] || (Wddx::VERSION::STRING + (REV ? ".#{REV}" : ""))
-CLEAN.include ['**/.*.sw?', '*.gem', '.config']
+CLEAN.include ['**/.*.sw?', '*.gem', '.config', 'coverage']
 RDOC_OPTS = [
     '--quiet', 
     '--title', "Ruby::WDDX documentation",
@@ -21,7 +21,7 @@ RDOC_OPTS = [
     "--line-numbers",
     "--include", "lib/**/*.rb",
     "--include", "examples/**/*.rb",
-    "--main", "README",
+    "--main", "README.txt",
     "--inline-source"
 ]
 GEM_NAME = "wddx"

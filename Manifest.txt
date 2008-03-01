@@ -3,7 +3,7 @@ README.txt
 lib/wddx.rb
 lib/wddx/version.rb
 lib/wddx/core_ext.rb
-lib/wddx/deserializer.rb 
+lib/wddx/deserializer.rb
 lib/wddx/rails_plugin.rb
 lib/wddx/record_set.rb
 lib/wddx/serializer.rb
