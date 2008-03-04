@@ -1,5 +1,7 @@
 History.txt
 README.txt
+wddx.xml
+bin/wddx
 lib/wddx.rb
 lib/wddx/version.rb
 lib/wddx/core_ext.rb
