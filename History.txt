@@ -1,3 +1,13 @@
+=== 0.4.0 / 2008-03-04
+* Added wddx binary. Pretty prints a wddx data structure.
+
+  Usage: 
+	wddx FILE|URL
+  OR
+    wddx < wddx.xml
+  OR
+    cat /path/to/wddx.xml | wddx
+
 === 0.3.3 / 2008-03-02
 * Fixed test issues when running the test in a different timezone.
 
