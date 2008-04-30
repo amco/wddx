@@ -96,7 +96,7 @@ module WDDX
         end
       end
     else
-      self.instance_variables.collect {|var| hash[var.gsub(/@/, "")] = instance_variable_get(var)}
+      hash = self.instance_variables.sort.inject({}) {|h, var| h[var.to_s.gsub(/@/, "")] = instance_variable_get(var); h}
     end
     hash.wddx_serialize
   end
