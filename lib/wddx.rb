@@ -39,7 +39,7 @@ module WDDX
       if obj.respond_to?(:read)
         return deserialize(obj.read)
       end
-      return deserialize(obj)
+      deserialize(obj)
     end
     alias :load :open
     
