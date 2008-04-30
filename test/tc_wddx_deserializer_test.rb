@@ -73,10 +73,15 @@ class TcWddxDeserializerTest < Test::Unit::TestCase
   def test_a_binary
      binary = @wddx.data["aBinary"]
      assert binary.kind_of?(WDDX::Binary)
-     #assert_equal "MIIBJASHETAS", binary.encode 
-     # Todo: implement
+     assert_equal "MIIBJASHETAS", binary.encode 
   end
-  
+ 
+  def test_binary
+    bin_file_content = File.open("#{FIXTURES}/favicon.ico", "rb").read
+    c = WDDX.load(WDDX::Binary.new(bin_file_content).to_wddx)
+    assert_equal bin_file_content, c.data.bin_data  
+  end
+ 
   def no_test_ascii_characters
     # <wddxPacket version='1.0'><header/><data><string>A</string></data></wddxPacket>
     # int(65)
