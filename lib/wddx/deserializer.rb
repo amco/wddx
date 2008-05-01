@@ -43,7 +43,6 @@ module WDDX
       end
 
       def tag_end(name)
-        #puts "Name: #{name}"
         case name.downcase
           when "comment"
             @wddx_packet.comment = @text.strip
@@ -84,9 +83,7 @@ module WDDX
            when "array", "field"
              @children.collect {|c| c.to_ruby }
            when "struct"
-             h = {}
-             @children.each {|c| var = c.to_ruby; h[var.key] = var.value}
-             h                                 
+             @children.inject({}) {|mem, c| var = c.to_ruby; mem[var.key] = var.value; mem}                       
            when "var"
              WDDX::Var.new(@attributes["name"], @children.first.to_ruby)
            when "null"
@@ -94,7 +91,7 @@ module WDDX
            when "number"
              (@text =~ /\./ ) ? @text.to_f : @text.to_i
            when "boolean"
-             (@attributes["value"].eql?("true")) ? true : false
+             @attributes["value"].eql?("true")
            #  Date-time values-
            #  Date-time values are encoded according to the full form of ISO8601,
            #  e.g., 1998-9-15T09:05:32+4:0. Note that single-digit values for months,

@@ -15,7 +15,7 @@ class CustomClass
   end
   
   def to_wddx_properties
-    [:to_s, "@name"]
+    ["@name", :to_s]
   end
 end
 

@@ -1,3 +1,7 @@
+=== 0.4.0 / 2008-04-31
+* Minor code cleanup.
+* WDDX library now works in Ruby 1.8 and 1.9
+
 === 0.4.0 / 2008-03-04
 * Added wddx binary. Pretty prints a wddx data structure.
 

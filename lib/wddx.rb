@@ -39,7 +39,7 @@ module WDDX
       if obj.respond_to?(:read)
         return deserialize(obj.read)
       end
-      return deserialize(obj)
+      deserialize(obj)
     end
     alias :load :open
     
@@ -96,7 +96,7 @@ module WDDX
         end
       end
     else
-      self.instance_variables.collect {|var| hash[var.gsub(/@/, "")] = instance_variable_get(var)}
+      hash = self.instance_variables.sort.inject({}) {|h, var| h[var.to_s.gsub(/@/, "")] = instance_variable_get(var); h}
     end
     hash.wddx_serialize
   end
@@ -128,7 +128,6 @@ module WDDX
   # object after decoding. It can also be used for efficient allocation of
   # memory during the decoding process.
   class Binary < WddxData
-    require "base64"
     attr_accessor :bin_data                                          
     
     # Initialize with the raw binary data (to be encoded with Base64)
@@ -139,7 +138,7 @@ module WDDX
 
     # set binary data
     def encoded_data=(arg)
-       @bin_data = Base64.decode64(arg)
+       @bin_data = arg.unpack( 'm' )[0]
     end
     
     # length of the raw binary data in bytes
@@ -151,7 +150,7 @@ module WDDX
     # Returns an Base64 encoded string
     def encode
       return @_data unless @_data.nil?
-      @_data = Base64.encode64(@bin_data).chomp unless @bin_data.nil?   
+      @_data = [@bin_data].pack( 'm' ).chomp if @bin_data   
       @_data
     end
     
