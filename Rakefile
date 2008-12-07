@@ -16,7 +16,7 @@ require File.join(File.dirname(__FILE__), 'lib', 'wddx', 'version')
 # clean files and directories
 CLEAN.include ['**/.*.sw?', '*.gem', '.config', 'coverage']
 PROJECT_NAME = "wddx"
-RUBYFORGE_CONFIG = YAML.load(open("#{ENV['HOME']}/.rubyforge/user-config.yml"))
+#RUBYFORGE_CONFIG = YAML.load(open("#{ENV['HOME']}/.rubyforge/user-config.yml"))
 
 Hoe.new(PROJECT_NAME, Wddx::VERSION::STRING) do |hoe|
   hoe.rubyforge_name = PROJECT_NAME
@@ -31,6 +31,7 @@ end
 
 desc 'Upload additional files to rubyforge'
 task :website_upload do
+  RUBYFORGE_CONFIG = YAML.load(open("#{ENV['HOME']}/.rubyforge/user-config.yml"))
   username = RUBYFORGE_CONFIG['username']
   host = "#{username}@rubyforge.org"
   remote_dir = "/var/www/gforge-projects/#{PROJECT_NAME}/"
