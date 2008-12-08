@@ -10,6 +10,9 @@ require 'hoe'
 require 'fileutils'
 require 'tempfile'
 
+gem 'ci_reporter'
+require 'ci/reporter/rake/test_unit' # use this if you're using Test::Unit
+
 include FileUtils
 require File.join(File.dirname(__FILE__), 'lib', 'wddx', 'version')
 
