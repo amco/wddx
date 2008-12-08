@@ -17,7 +17,7 @@ include FileUtils
 require File.join(File.dirname(__FILE__), 'lib', 'wddx', 'version')
 
 # clean files and directories
-CLEAN.include ['**/.*.sw?', '*.gem', '.config', 'coverage']
+CLEAN.include ['**/.*.sw?', '*.gem', '.config', 'coverage', 'results']
 PROJECT_NAME = "wddx"
 #RUBYFORGE_CONFIG = YAML.load(open("#{ENV['HOME']}/.rubyforge/user-config.yml"))
 
