@@ -18,7 +18,7 @@
                 <number>-12.456</number>
             </var>
             <var name='aDateTime'>
-                <dateTime>1998-06-12T04:32:12</dateTime>
+                <dateTime>1998-06-11T16:32:12Z</dateTime>
             </var>
             <var name='aBoolean'>
                 <boolean value='true'/>
